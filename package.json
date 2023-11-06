@@ -55,7 +55,7 @@
     "s3/graceful-fs": "^4.2.11"
   },
   "engines": {
-    "node": ">=18"
+    "node": "=18"
   },
   "name": "mapa-composer",
   "description": "Plataforma de Mapas interativos da SmartComposerVR",
