@@ -3,14 +3,14 @@ header {
 }
 
 .oil-on-canvas {
-  max-width: calc(100vw - 75px);
+  max-width: calc(100vw - 45px);
   height: 100vh;
   background: white;
   margin-top: 0px;
 }
 
 #map-ll {
-  width: calc(100vw - 75px);
+  width: calc(100vw - 45px);
   height: calc(100vh - 50px);
 }
 
@@ -21,4 +21,16 @@ header {
   padding: 7px 0;
   justify-content: center;
   align-items: center;
+}
+
+.leaflet-top {
+  position: absolute;
+  top: initial;
+  bottom: 7px !important;
+  
+}
+
+.leaflet-routing-container {
+  height: fit-content !important;
+  right: 7px;
 }

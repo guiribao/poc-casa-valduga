@@ -54,11 +54,11 @@ body {
 }
 
 .sidebar-brand {
-  padding: 1.6em 1em;
+  padding: 1.6em 1em 0 .45em;
   color: white;
 }
 .sidebar-brand img {
-  height: 26px;
+  height: 20px;
 }
 .sidebar-brand h2 {
   display: flex;

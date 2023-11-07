@@ -42,10 +42,14 @@ export async function loader({ request, params }: LoaderArgs) {
 }
 
 export default function VerMapa() {
-  let [myLocation, setMyLocation] = useState([]);
+  //let [myLocation, setMyLocation] = useState([]);
+  let [area, setArea] = useState(false);
+
 
   var map = null;
   var rota = null;
+  var myLocation = null;
+
   var markers = [
     { latLng: [-29.177450, -51.556225], title: 'Restaurante Maria Valduga' },
     { latLng: [-29.177270, -51.55680], title: 'LUI Wine Bar & NOI Gelato' },
@@ -57,7 +61,7 @@ export default function VerMapa() {
     event.target.openTooltip();
   }
 
-  function createNavigation(event, destino) {
+  const createNavigation = (event, destino) => {
     if (rota != null) rota.remove();
 
     rota = L.Routing.control({
@@ -74,22 +78,30 @@ export default function VerMapa() {
 
   function appendLocation(location, verb) {
     verb = verb || 'updated';
+    let { latitude, longitude } = location.coords
+    
+    if(latitude > -29.176774 && latitude < -29.182386 
+      && longitude > -51.555339 && longitude < -51.557104) {
+        setArea(true)
+        myLocation = [latitude, longitude];
 
-    var pinMeIcon = L.icon({
-      iconUrl: 'https://composervr.com/resources/pin_me.png',
-      iconSize: [32, 32],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      className: 'icon-pin',
-    });
+        var pinMeIcon = L.icon({
+          iconUrl: 'https://composervr.com/resources/pin_me.png',
+          iconSize: [32, 32],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          className: 'icon-pin',
+        });
 
-    L.marker([location.coords.latitude, location.coords.longitude], {
-      title: 'Você',
-      icon: pinMeIcon,
-    }).addTo(map);
-
-    setMyLocation([location.coords.latitude, location.coords.longitude]);
-
+        L.marker([location.coords.latitude, location.coords.longitude], {
+          title: 'Você',
+          icon: pinMeIcon,
+        }).addTo(map);
+    } else {
+      setArea(false)
+      myLocation = [-29.177450, -51.556225];
+    }
+    
     console.info('coords sync: ' + verb);
   }
 
@@ -106,14 +118,8 @@ export default function VerMapa() {
     }
 
     map = L.map('map-ll', {
-      // maxBounds: {
-      //   north: -29.17651,
-      //   south: -29.1808,
-      //   east: -51.552,
-      //   west: -51.5595,
-      // },
       maxBoundsViscosity: 1.0,
-    }).setView([-29.17865, -51.556], 18);
+    }).setView([-29.1786595, -51.556], 18);
 
     map.setMaxBounds(map.getBounds());
 
@@ -126,7 +132,7 @@ export default function VerMapa() {
     });
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 19,
+      minZoom: 18,
       maxZoom: 19,
       attribution: '&copy; <a hr7ef="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
@@ -149,11 +155,6 @@ export default function VerMapa() {
 
       var popup = L.popup().setLatLng(marker.latLng).setContent(navigateButton);
 
-      popup.addEventListener('click', (event) => {
-        createNavigation(event);
-        console.log('chamou');
-      });
-
       ref.bindPopup(popup);
       ref.addEventListener('click', touchPin);
     }
@@ -163,7 +164,10 @@ export default function VerMapa() {
     <main className='oil-on-canvas'>
       <div id='map-ll'></div>
       <footer className='form-navegacao'>
-        <p>Toque ou clique no pino para navegar</p>
+        <p>
+          Toque ou clique no pontos para navegar
+        </p>
+        <span>Você não está no complexo</span>
       </footer>
     </main>
   );
