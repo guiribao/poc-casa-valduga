@@ -3,14 +3,14 @@ header {
 }
 
 .oil-on-canvas {
-  max-width: calc(100vw - 45px);
+  max-width: calc(100vw - 75px);
   height: 100vh;
   background: white;
   margin-top: 0px;
 }
 
 #map-ll {
-  width: calc(100vw - 45px);
+  width: calc(100vw - 75px);
   height: calc(100vh - 50px);
 }
 

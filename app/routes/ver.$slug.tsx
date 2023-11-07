@@ -42,12 +42,12 @@ export async function loader({ request, params }: LoaderArgs) {
 }
 
 export default function VerMapa() {
-  //let [myLocation, setMyLocation] = useState([]);
-  let [area, setArea] = useState(false);
+  let [myLocation, setMyLocation] = useState([]);
+  let [area, setArea] = useState(true);
 
   var map = null;
   var rota = null;
-  var myLocation = null;
+  //var myLocation = null;
 
   var markers = [
     {
@@ -61,17 +61,17 @@ export default function VerMapa() {
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.1776900, -51.5568],
+      latLng: [-29.17769, -51.5568],
       title: 'Recepção pousadas',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.1781000, -51.5567995],
+      latLng: [-29.1781, -51.5567995],
       title: 'Café Santa Mônica',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.17810, -51.556395],
+      latLng: [-29.1781, -51.556395],
       title: 'Loja e degustação',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
@@ -81,12 +81,12 @@ export default function VerMapa() {
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.17763500000, -51.555850000],
+      latLng: [-29.177635, -51.55585],
       title: 'Pousada Storia',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.1785200, -51.5561710],
+      latLng: [-29.17852, -51.556171],
       title: 'Pousada Raízes Café da Manhã',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
@@ -116,13 +116,13 @@ export default function VerMapa() {
     let { latitude, longitude } = location.coords;
 
     if (
-      latitude > -29.176774 &&
-      latitude < -29.182386 &&
-      longitude > -51.555339 &&
-      longitude < -51.557104
+      latitude > -29.1767749998 &&
+      latitude < -29.1823869998 &&
+      longitude > -51.555339999 &&
+      longitude < -51.557104994
     ) {
       setArea(true);
-      myLocation = [latitude, longitude];
+      setMyLocation([latitude, longitude]);
 
       var pinMeIcon = L.icon({
         iconUrl: 'https://composervr.com/resources/pin_me.png',
@@ -138,7 +138,7 @@ export default function VerMapa() {
       }).addTo(map);
     } else {
       setArea(false);
-      myLocation = [-29.17745, -51.556225];
+      setMyLocation([-29.17745, -51.556225]);
     }
 
     console.info('coords sync: ' + verb);
@@ -224,7 +224,8 @@ export default function VerMapa() {
       <div id='map-ll'></div>
       <footer className='form-navegacao'>
         <p>Toque ou clique no pontos para navegar</p>
-        <span>Você não está no complexo</span>
+        {!area && <span>Você não está no complexo</span>}
+        <span>{myLocation}</span>
       </footer>
     </main>
   );
