@@ -13,17 +13,7 @@ header {
 
 #map-ll {
   width: 100%;
-  height: calc(100vh - 130px);
-}
-
-@media screen and (min-width: 1024px) {
-  .oil-on-canvas {
-    width: calc(100vw - 75px);
-  }
-  
-  #map-ll {
-    width: calc(100vw - 75px);
-  }
+  height: calc(100% - 130px);
 }
 
 .form-navegacao {
@@ -74,4 +64,14 @@ header {
 .leaflet-routing-container {
   height: fit-content !important;
   right: 7px;
+}
+
+@media screen and (min-width: 1024px) {
+  .oil-on-canvas {
+    width: calc(100vw - 75px);
+  }
+  
+  #map-ll {
+    width: calc(100vw - 75px);
+  }
 }

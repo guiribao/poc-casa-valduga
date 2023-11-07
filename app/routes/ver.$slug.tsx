@@ -134,14 +134,14 @@ export default function VerMapa() {
     let { latitude, longitude } = location.coords;
 
     if (
-      latitude > -29.1767749998 &&
-      latitude < -29.1823869998 &&
-      longitude > -51.555339999 &&
-      longitude < -51.557104994
+      latitude < -29.1767749998 &&
+      latitude > -29.1823869998 &&
+      longitude < -51.555339999 &&
+      longitude > -51.557104994
     ) {
       setArea(true);
       setMyLocation([latitude, longitude]);           
-      appendMyLocation()
+      appendMyLocation([latitude, longitude])
     } else {
       setArea(false);
       setMyLocation([-29.17745, -51.556225]);
