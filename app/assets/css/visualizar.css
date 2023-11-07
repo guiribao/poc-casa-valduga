@@ -15,7 +15,8 @@ header {
 
 #map-ll {
   width: 100%;
-  height: calc(100% - 100px);
+  min-height: 200px;
+  max-height: 90vh;
 }
 
 .form-navegacao {
