@@ -34,11 +34,11 @@ export async function loader({ request, params }: LoaderArgs) {
   //   failureRedirect: '/entrar',
   // });
 
-  let mapa = await pegarMapaPeloSlug(params.slug);
+  //let mapa = await pegarMapaPeloSlug(params.slug);
 
-  if (mapa === null) return redirect('/');
+  //if (mapa === null) return redirect('/');
 
-  return { mapa };
+  //return { mapa };
 }
 
 export default function VerMapa() {
