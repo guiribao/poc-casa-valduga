@@ -27,6 +27,7 @@
     "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-geolocated": "^4.1.2",
     "react-input-mask": "^2.0.4",
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",

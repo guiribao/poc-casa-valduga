@@ -22,6 +22,7 @@ export default function Topbar() {
   const info = getPageInfo(location.pathname);
 
   let editando = location.pathname.includes('/editar');
+  let visualizando = location.pathname.includes('/ver');
 
   //@ts-ignore
   function emitirFerramenta(event) {
@@ -29,13 +30,17 @@ export default function Topbar() {
   }
 
   return (
+    (visualizando && (
+      <header>
+
+      </header>
+    )) ||
     (usuario && editando && (
       <header>
         <h2>
           <label htmlFor='nav-toggle'>
             <span className='las la-bars'></span>
           </label>
-          
         </h2>
       </header>
     )) ||
@@ -56,7 +61,7 @@ export default function Topbar() {
               {' | '}
             </small>
             <small>
-              <Link to='/autentica/sair'>Sair</Link>
+              <Link to='/sair'>Sair</Link>
             </small>
           </div>
         </div>

@@ -1,16 +1,24 @@
 header {
-  justify-content: flex-start;
+  display: none;
 }
 
 .oil-on-canvas {
   max-width: calc(100vw - 75px);
+  height: 100vh;
   background: white;
-  background-repeat: no-repeat;
-  margin-top: 76px;
-  overflow: hidden;
+  margin-top: 0px;
 }
 
 #map-ll {
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw - 75px);
+  height: calc(100vh - 50px);
+}
+
+.form-navegacao {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 7px 0;
+  justify-content: center;
+  align-items: center;
 }
