@@ -4,14 +4,16 @@ header {
 
 .oil-on-canvas {
   max-width: calc(100vw - 45px);
-  height: 100vh;
+  height: 100%;
   background: white;
   margin-top: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 #map-ll {
   width: 100%;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 100px);
 }
 
 @media screen and (min-width: 1024px) {
@@ -25,13 +27,18 @@ header {
 }
 
 .form-navegacao {
-  height: 90px;
+  height: 100px;
+  background: red;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .pin {
   width: fit-content;
