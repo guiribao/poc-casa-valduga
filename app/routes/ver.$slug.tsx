@@ -53,12 +53,12 @@ export default function VerMapa() {
     {
       latLng: [-29.17745, -51.556225],
       title: 'Restaurante Maria Valduga',
-      icon: 'https://composervr.com/resources/pin_01.png',
+      icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
       latLng: [-29.17718, -51.5568],
       title: 'LUI Wine Bar & NOI Gelato',
-      icon: 'https://composervr.com/resources/pin_02.png',
+      icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
       latLng: [-29.17819, -51.556685],
