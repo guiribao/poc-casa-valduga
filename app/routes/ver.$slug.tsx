@@ -164,7 +164,7 @@ export default function VerMapa() {
 
     map = L.map('map-ll', {
       maxBoundsViscosity: 1.0,
-    }).setView([-29.1786595, -51.556], 18);
+    }).setView([-29.177499, -51.556], 18);
 
     map.setMaxBounds([
        //south west
@@ -176,7 +176,7 @@ export default function VerMapa() {
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       minZoom: 16,
       maxZoom: 19,
-      zoom: 18,
+      zoom: 17,
       attribution: '&copy; <a hr7ef="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
@@ -189,7 +189,7 @@ export default function VerMapa() {
     let googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
       minZoom: 16,
       maxZoom: 19,
-      zoom: 18,
+      zoom: 17,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
     }).addTo(map);
 

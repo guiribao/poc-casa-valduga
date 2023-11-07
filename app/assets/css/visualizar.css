@@ -15,8 +15,8 @@ header {
 
 #map-ll {
   width: 100%;
-  min-height: 200px;
-  max-height: 90vh;
+  height: 65vh;
+  background: black;
 }
 
 .form-navegacao {
@@ -79,8 +79,14 @@ header {
 }
 
 
+@media screen and (min-height: 390px) {
+  #map-ll {
+    height: 70vh;
+  }
+}
+
 @media screen and (min-height: 512px) {
   #map-ll {
-    height: calc(100% - 100px);
+    height: 78vh;
   }
 }
