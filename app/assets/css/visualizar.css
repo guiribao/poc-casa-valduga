@@ -68,17 +68,6 @@ header {
   right: 7px;
 }
 
-@media screen and (min-width: 1024px) {
-  .oil-on-canvas {
-    width: calc(100vw - 75px);
-  }
-  
-  #map-ll {
-    width: calc(100vw - 75px);
-  }
-}
-
-
 @media screen and (min-height: 390px) {
   #map-ll {
     height: 70vh;
@@ -88,5 +77,16 @@ header {
 @media screen and (min-height: 512px) {
   #map-ll {
     height: 78vh;
+  }
+}
+
+@media screen and (min-height: 512px) and (min-width: 1024px) {
+  .oil-on-canvas {
+    width: calc(100vw - 75px);
+  }
+  
+  #map-ll {
+    width: calc(100vw - 75px);
+    height: 85vh;
   }
 }
