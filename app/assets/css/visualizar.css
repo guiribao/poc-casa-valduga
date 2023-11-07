@@ -11,7 +11,7 @@ header {
 
 #map-ll {
   width: 100%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 90px);
 }
 
 @media screen and (min-width: 1024px) {
@@ -25,6 +25,7 @@ header {
 }
 
 .form-navegacao {
+  height: 90px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
