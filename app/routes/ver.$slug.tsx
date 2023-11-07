@@ -61,13 +61,33 @@ export default function VerMapa() {
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.17819, -51.556685],
+      latLng: [-29.1776900, -51.5568],
+      title: 'Recepção pousadas',
+      icon: 'https://composervr.com/resources/pin_places.png',
+    },
+    {
+      latLng: [-29.1781000, -51.5567995],
       title: 'Café Santa Mônica',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
     {
-      latLng: [-29.178135, -51.556],
+      latLng: [-29.17810, -51.556395],
+      title: 'Loja e degustação',
+      icon: 'https://composervr.com/resources/pin_places.png',
+    },
+    {
+      latLng: [-29.178135, -51.55589],
       title: 'Pousada Gran',
+      icon: 'https://composervr.com/resources/pin_places.png',
+    },
+    {
+      latLng: [-29.17763500000, -51.555850000],
+      title: 'Pousada Storia',
+      icon: 'https://composervr.com/resources/pin_places.png',
+    },
+    {
+      latLng: [-29.1785200, -51.5561710],
+      title: 'Pousada Raízes Café da Manhã',
       icon: 'https://composervr.com/resources/pin_places.png',
     },
   ];
@@ -155,14 +175,15 @@ export default function VerMapa() {
     // }).addTo(map);
 
     let googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
+      minZoom: 18,
+      maxZoom: 19,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
     }).addTo(map);
 
     L.Routing.control({
       waypoints: [
-        [-29.178335, -51.556335],
         [-29.17718, -51.55638],
+        [-29.17899, -51.556335],
       ],
       lineOptions: {
         styles: [{ color: 'yellow', opacity: 0.47, weight: 5 }],
