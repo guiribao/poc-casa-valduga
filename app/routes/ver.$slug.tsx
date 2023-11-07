@@ -38,7 +38,7 @@ export async function loader({ request, params }: LoaderArgs) {
 
   //if (mapa === null) return redirect('/');
 
-  //return { mapa };
+  return {};
 }
 
 export default function VerMapa() {
