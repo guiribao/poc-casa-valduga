@@ -149,13 +149,21 @@ export default function VerMapa() {
     }).addTo(map);
 
     // G Maps imagens de satélite.
-    var googleHybrid = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
-      maxZoom: 19,
+    // var googleHybrid = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+    //   maxZoom: 19,
+    //   subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    // }).addTo(map);
+
+    let googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+      maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
     }).addTo(map);
 
     L.Routing.control({
-      waypoints: [[-29.178335, -51.556335], [-29.17718, -51.55638]],
+      waypoints: [
+        [-29.178335, -51.556335],
+        [-29.17718, -51.55638],
+      ],
       lineOptions: {
         styles: [{ color: 'yellow', opacity: 0.47, weight: 5 }],
       },
