@@ -10,16 +10,16 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 #map-ll {
   width: 100%;
-  height: calc(100vh - 180px);
+  height: calc(100% - 100px);
 }
 
 .form-navegacao {
-  margin-bottom: 15px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,5 +74,12 @@ header {
   
   #map-ll {
     width: calc(100vw - 75px);
+  }
+}
+
+
+@media screen and (min-height: 512px) {
+  #map-ll {
+    height: calc(100% - 100px);
   }
 }
