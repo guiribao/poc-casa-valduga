@@ -47,6 +47,7 @@ export default function VerMapa() {
 
   var map = null;
   var rota = null;
+  var me = null;
   //var myLocation = null;
 
   var markers = [
@@ -111,6 +112,23 @@ export default function VerMapa() {
     rota.addTo(map);
   };
 
+  function appendMyLocation() {
+    if(me != null) map.removeLayer(me)
+
+    var pinMeIcon = L.icon({
+      iconUrl: 'https://composervr.com/resources/pin_me.png',
+      iconSize: [32, 32],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      className: 'icon-pin',
+    });
+
+    me = L.marker([myLocation[0], myLocation[1]], {
+      title: 'Você',
+      icon: pinMeIcon,
+    }).addTo(map);
+  }
+
   function appendLocation(location, verb) {
     verb = verb || 'updated';
     let { latitude, longitude } = location.coords;
@@ -122,20 +140,8 @@ export default function VerMapa() {
       longitude < -51.557104994
     ) {
       setArea(true);
-      setMyLocation([latitude, longitude]);
-
-      var pinMeIcon = L.icon({
-        iconUrl: 'https://composervr.com/resources/pin_me.png',
-        iconSize: [32, 32],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-        className: 'icon-pin',
-      });
-
-      L.marker([location.coords.latitude, location.coords.longitude], {
-        title: 'Você',
-        icon: pinMeIcon,
-      }).addTo(map);
+      setMyLocation([latitude, longitude]);           
+      appendMyLocation()
     } else {
       setArea(false);
       setMyLocation([-29.17745, -51.556225]);
