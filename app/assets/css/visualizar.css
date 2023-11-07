@@ -4,22 +4,22 @@ header {
 
 .oil-on-canvas {
   max-width: calc(100vw - 45px);
-  height: 100%;
+  height: 100vh;
   background: white;
   margin-top: 0px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #map-ll {
   width: 100%;
-  height: calc(100% - 130px);
+  height: calc(100vh - 100px);
 }
 
 .form-navegacao {
-  height: 100px;
-  background: red;
-  margin: 0 auto;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +29,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .pin {
   width: fit-content;
