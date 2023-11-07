@@ -41,6 +41,7 @@ header {
   justify-content: center;
   position: absolute;
   top: 0;
+  z-index: 555;
 }
 .pin {
   width: fit-content;
