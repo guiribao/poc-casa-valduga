@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { LoaderArgs, redirect } from '@remix-run/node';
 import type { V2_MetaFunction } from '@remix-run/node';
-
 import pegarMapaPeloSlug from '~/domain/Mapas/pegar-mapa-pelo-slug.server';
 
 import visualizarStyle from '~/assets/css/visualizar.css';
@@ -48,6 +47,7 @@ export default function VerMapa() {
   var map = null;
   var rota = null;
   var me = null;
+  var locationTracker = null;
   //var myLocation = null;
 
   var markers = [
@@ -112,20 +112,17 @@ export default function VerMapa() {
     rota.addTo(map);
   };
 
-  function appendMyLocation() {
-    if(me != null) map.removeLayer(me)
+  function appendMyLocation(location) {
+    if (map && me) map.removeLayer(me);
 
-    var pinMeIcon = L.icon({
-      iconUrl: 'https://composervr.com/resources/pin_me.png',
-      iconSize: [32, 32],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      className: 'icon-pin',
-    });
-
-    me = L.marker([myLocation[0], myLocation[1]], {
+    me = L.marker(location, {
       title: 'Você',
-      icon: pinMeIcon,
+      icon: new L.DivIcon({
+        className: 'pin-me',
+        iconSize: [46, 70],
+        html: `<img class="pin-icon" src="https://composervr.com/resources/pin_me.png" alt="Você" title="Seu pin no mapa" />
+          <div class="pin-me-text">Você</div>`,
+      }),
     }).addTo(map);
   }
 
@@ -140,11 +137,13 @@ export default function VerMapa() {
       longitude > -51.557104994
     ) {
       setArea(true);
-      setMyLocation([latitude, longitude]);           
-      appendMyLocation([latitude, longitude])
+      setMyLocation([latitude, longitude]);
+      appendMyLocation([latitude, longitude]);
     } else {
       setArea(false);
       setMyLocation([-29.17745, -51.556225]);
+      map.removeLayer(me);
+      me = null;
     }
 
     console.info('coords sync: ' + verb);
@@ -157,7 +156,7 @@ export default function VerMapa() {
       navigator.geolocation.getCurrentPosition(function (location) {
         appendLocation(location, 'fetched');
       });
-      navigator.geolocation.watchPosition(appendLocation);
+      locationTracker = navigator.geolocation.watchPosition(appendLocation);
     } else {
       console.warn('Geolocation API not supported.');
     }
@@ -167,10 +166,10 @@ export default function VerMapa() {
     }).setView([-29.177499, -51.556], 18);
 
     map.setMaxBounds([
-       //south west
-       [-29.182, -51.555],
-       //north east
-       [-29.176, -51.557]
+      //south west
+      [-29.182, -51.555],
+      //north east
+      [-29.176, -51.557],
     ]);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -210,7 +209,7 @@ export default function VerMapa() {
         title: marker.title,
         icon: new L.DivIcon({
           className: 'pin',
-          iconSize: [120, 90],
+          iconSize: [75, 90],
           html:
             '<img class="pin-icon" src="' +
             marker.icon +
