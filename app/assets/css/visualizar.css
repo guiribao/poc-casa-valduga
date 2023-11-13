@@ -32,7 +32,7 @@ header {
   justify-content: center;
   text-align: center;
 }
-.pin {
+.pin-place {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -40,20 +40,22 @@ header {
   justify-content: center;
   gap: 1em;
   border-radius: 2em;
+  z-index: 1;
+  z-index: 5555;
 }
+
 .pin-icon {
-  height: 42px;
+  height: 36px;
 }
 
 .pin-text {
   max-width: 70px;
-  font-family: "Open sans", Ubuntu, sans-serif;
+  font-family: 'Open sans', Ubuntu, sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: tomato;
   text-shadow: 1px 1px 0px #000;
   text-align: center;
-  
 }
 
 .pin-me {
@@ -62,7 +64,7 @@ header {
 
 .pin-me-text {
   max-width: 70px;
-  font-family: "Open sans", Ubuntu, sans-serif;
+  font-family: 'Open sans', Ubuntu, sans-serif;
   font-size: 15px;
   font-weight: bold;
   color: greenyellow;
@@ -70,16 +72,24 @@ header {
   text-align: center;
   z-index: 5555;
 }
+
 .leaflet-top {
   position: absolute;
   top: initial;
-  bottom: 7px !important;
-  
+  bottom: 5px !important;
 }
 
 .leaflet-routing-container {
   height: fit-content !important;
   right: 7px;
+}
+
+.pin {
+  z-index: 5556;
+}
+
+.leaflet-marker-icon {
+  z-index: 5556 !important;
 }
 
 @media screen and (min-height: 390px) {
@@ -98,7 +108,7 @@ header {
   .oil-on-canvas {
     width: calc(100vw - 75px);
   }
-  
+
   #map-ll {
     width: calc(100vw - 75px);
     height: 90vh;

@@ -192,23 +192,11 @@ export default function VerMapa() {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
     }).addTo(map);
 
-    L.Routing.control({
-      waypoints: [
-        [-29.17718, -51.55638],
-        [-29.17899, -51.556335],
-      ],
-      lineOptions: {
-        styles: [{ color: 'yellow', opacity: 0.47, weight: 5 }],
-      },
-      language: 'pt-BR',
-      profile: 'walk',
-    }).addTo(map);
-
     for (let marker of markers) {
       let ref = L.marker(marker.latLng, {
         title: marker.title,
         icon: new L.DivIcon({
-          className: 'pin',
+          className: 'pin-place',
           iconSize: [75, 90],
           html:
             '<img class="pin-icon" src="' +
@@ -229,6 +217,18 @@ export default function VerMapa() {
       ref.bindPopup(popup);
       ref.addEventListener('click', touchPin);
     }
+
+    L.Routing.control({
+      waypoints: [
+        [-29.17718, -51.55638],
+        [-29.17899, -51.556335],
+      ],
+      lineOptions: {
+        styles: [{ color: 'yellow', opacity: 0.7, weight: 5 }],
+      },
+      language: 'pt-BR',
+      profile: 'walk',
+    }).addTo(map);
   }, []);
 
   return (
